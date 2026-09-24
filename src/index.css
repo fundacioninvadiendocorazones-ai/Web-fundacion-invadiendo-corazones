@@ -33,3 +33,61 @@
   background-color: #F6F1E9;
   border: 1px solid rgba(220, 208, 196, 0.6);
 }
+
+/* Big Red Heart Splash Entrance Animations */
+@keyframes heartbeatBig {
+  0% {
+    transform: scale(0.92);
+  }
+  14% {
+    transform: scale(1.18);
+  }
+  28% {
+    transform: scale(1.02);
+  }
+  42% {
+    transform: scale(1.25);
+  }
+  70% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(0.92);
+  }
+}
+
+@keyframes heartGlowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 18px rgba(220, 40, 40, 0.4)) drop-shadow(0 0 45px rgba(220, 40, 40, 0.2));
+  }
+  42% {
+    filter: drop-shadow(0 0 35px rgba(235, 45, 45, 0.8)) drop-shadow(0 0 75px rgba(220, 40, 40, 0.45));
+  }
+}
+
+.animate-heartbeat-big {
+  animation: heartbeatBig 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite, heartGlowPulse 1.25s ease-in-out infinite;
+}
+
+@keyframes rippleWave {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.animate-ripple-1 {
+  animation: rippleWave 2.4s cubic-bezier(0.1, 0.6, 0.3, 1) infinite;
+}
+
+.animate-ripple-2 {
+  animation: rippleWave 2.4s cubic-bezier(0.1, 0.6, 0.3, 1) 0.8s infinite;
+}
+
+.animate-ripple-3 {
+  animation: rippleWave 2.4s cubic-bezier(0.1, 0.6, 0.3, 1) 1.6s infinite;
+}

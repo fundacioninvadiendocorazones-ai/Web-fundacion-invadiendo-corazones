@@ -13,12 +13,16 @@ import { DonationsSection } from './components/DonationsSection';
 import { Footer } from './components/Footer';
 import { VolunteerModal } from './components/VolunteerModal';
 import { ScrollToTopButton } from './components/ScrollToTopButton';
+import { HeartSplash } from './components/HeartSplash';
 
 export default function App() {
   const [volunteerModalOpen, setVolunteerModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF7F2] text-[#2C2320]">
+      {/* Intro Heart Splash Animation upon opening */}
+      <HeartSplash />
+
       {/* Top navigation */}
       <Navbar />
 
