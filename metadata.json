@@ -1,0 +1,8 @@
+{
+  "name": "Remix Invadiendo Corazones | ¡Transformando vidas a través del amor y el servicio!",
+  "description": "Fundación social fundada en octubre de 2018 para ayudar y enriquecer a comunidades vulnerables a través del amor, la solidaridad, la fe y la fortaleza inspirada en el corazón de Dios.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
