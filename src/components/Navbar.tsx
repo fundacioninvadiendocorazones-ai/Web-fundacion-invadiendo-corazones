@@ -27,6 +27,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+    window.dispatchEvent(new CustomEvent('replay-heart-splash'));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
