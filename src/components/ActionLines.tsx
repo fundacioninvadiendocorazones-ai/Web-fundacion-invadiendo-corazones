@@ -26,7 +26,6 @@ export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => 
       icon: Utensils,
       image: '/assets/images/como_ayudamos_1.jpg',
       alt: 'Jornada comunitaria de entrega de mercados y víveres de primera necesidad por Fundación Invadiendo Corazones',
-      kicker: 'Línea 01 · Nutrición y Asistencia Familiar',
       description:
         'Llegamos con mercados completos y paquetes de alimentos esenciales directamente a las familias en condición de vulnerabilidad. Organizamos jornadas de entrega con víveres de primera necesidad, granos y productos nutritivos para que en ninguna mesa falte el sustento diario con dignidad.',
       highlights: [
@@ -47,7 +46,6 @@ export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => 
       icon: Gift,
       image: '/assets/images/como_ayudamos_2.jpg',
       alt: 'Celebración comunitaria festiva y entrega de regalos a niños y familias por Fundación Invadiendo Corazones',
-      kicker: 'Línea 02 · Infancia, Cultura y Recreación',
       description:
         'Transformamos las fechas especiales y épocas navideñas en verdaderas fiestas comunitarias de afecto e inclusión. Realizamos jornadas de entrega de juguetes, refrigerios nutritivos y dinámicas lúdicas que fortalecen la autoestima y devuelven la ilusión a los más pequeños.',
       highlights: [
@@ -68,7 +66,6 @@ export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => 
       icon: HeartHandshake,
       image: '/assets/images/como_ayudamos_3.jpg',
       alt: 'Acompañamiento comunitario cercano y visitas en territorio con familias por Fundación Invadiendo Corazones',
-      kicker: 'Línea 03 · Desarrollo Bio-Psico-Social',
       description:
         'Nuestra labor se vive caminando las calles y veredas donde las familias enfrentan mayores barreras. Brindamos presencia constante, orientación en salud preventiva, impulso a iniciativas productivas y un acompañamiento psicosocial cercano para empoderar a la comunidad.',
       highlights: [
@@ -161,13 +158,6 @@ export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => 
               {/* Gradient Dark Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/15 pointer-events-none" />
 
-              {/* Kicker Top */}
-              <div className="absolute top-5 left-5 text-white z-10">
-                <span className="px-3.5 py-1.5 rounded-lg bg-black/50 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider">
-                  {active.kicker}
-                </span>
-              </div>
-
               {/* Tagline Bottom of Image */}
               <div className="absolute bottom-6 left-6 right-6 text-white z-10 space-y-1">
                 <p className="text-xs uppercase tracking-widest text-[#FCD34D] font-bold">
@@ -191,9 +181,6 @@ export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => 
                     <IconComponent className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#A0453B]">
-                      {active.kicker}
-                    </span>
                     <h3 className="font-serif-display text-xl sm:text-2xl font-bold text-[#251B18] leading-tight">
                       {active.title}
                     </h3>
