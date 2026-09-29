@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  Utensils, 
-  Gift, 
+  HeartPulse, 
+  Trophy, 
   HeartHandshake, 
   CheckCircle2, 
   Pause,
@@ -12,51 +12,77 @@ interface ActionLinesProps {
   onOpenVolunteer?: () => void;
 }
 
+interface SlideItem {
+  id: number;
+  title: string;
+  shortTitle: string;
+  tagline: string;
+  icon: React.ComponentType<{ className?: string }>;
+  image: string;
+  alt: string;
+  description: string[];
+  highlightsTitle?: string;
+  isNumberedHighlights?: boolean;
+  highlights?: string[];
+  closingNote?: string;
+  colorAccent: string;
+  bgAccent: string;
+  quote?: string;
+}
+
 export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const autoPlayTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const slides = [
+  const slides: SlideItem[] = [
     {
       id: 1,
-      title: 'Seguridad Alimentaria y Entrega de Mercados',
-      shortTitle: 'Mercados & Nutrición',
-      tagline: 'Alivio inmediato y sustento nutritivo para los hogares más vulnerables',
-      icon: Utensils,
+      title: 'La Salud como Espacio de Recreación, Comunidad y Alivio',
+      shortTitle: 'Salud & Alivio',
+      tagline: 'La salud como espacio de recreación, comunidad, alivio y amor',
+      icon: HeartPulse,
       image: '/assets/images/como_ayudamos_1.jpg',
-      alt: 'Jornada comunitaria de entrega de mercados y víveres de primera necesidad por Fundación Invadiendo Corazones',
-      description:
-        'Llegamos con mercados completos y paquetes de alimentos esenciales directamente a las familias en condición de vulnerabilidad. Organizamos jornadas de entrega con víveres de primera necesidad, granos y productos nutritivos para que en ninguna mesa falte el sustento diario con dignidad.',
+      alt: 'Visitas a centros hospitalarios y acompañamiento en salud por Fundación Invadiendo Corazones',
+      description: [
+        'La Fundación Invadiendo Corazones aborda la salud como un espacio de recreación, comunidad, alivio y amor.',
+        'Nuestro trabajo se enfoca en visibilizar y acompañar a quienes padecen alguna enfermedad o atraviesan situaciones de vulnerabilidad en salud. Como parte de nuestra labor, realizamos visitas a clínicas y centros hospitalarios para entregar detalles significativos y brindar palabras de aliento.',
+        'Nuestro objetivo es proporcionar herramientas psicosociales, recreativas y educativas a estos entornos, reafirmando nuestro compromiso de velar por la vida y el bienestar integral de las personas.'
+      ],
+      highlightsTitle: 'Pilares de nuestra labor en salud:',
       highlights: [
-        'Entrega directa y organizada de mercados familiares con alimentos esenciales.',
-        'Atención prioritaria a madres cabeza de hogar, niños y adultos mayores.',
-        'Distribución transparente, equitativa y cercana en barrios y asentamientos.',
-        'Alivio tangible para que las familias enfoquen recursos en su progreso integral.',
+        'Visitas a clínicas y centros hospitalarios entregando detalles significativos y palabras de aliento.',
+        'Acompañamiento cercano a personas con enfermedad o en condición de vulnerabilidad en salud.',
+        'Herramientas psicosociales, recreativas y educativas orientadas al bienestar integral de las personas.'
       ],
       colorAccent: 'text-[#D94848]',
       bgAccent: 'bg-[#FDF0EE]',
-      quote: '«Garantizar el sustento de una familia es abrir la puerta a la paz, la salud y la tranquilidad en el hogar.»'
+      quote: '«Abordar la salud como un espacio de recreación, comunidad y alivio reafirma nuestro compromiso por la vida.»'
     },
     {
       id: 2,
-      title: 'Celebraciones Comunitarias y Sonrisas para la Niñez',
-      shortTitle: 'Niñez & Alegría',
-      tagline: 'Regalos, actividades recreativas y espacios protectores para la infancia',
-      icon: Gift,
+      title: 'Fundación Invadiendo Corazones apoya los espacios deportivos',
+      shortTitle: 'Espacios Deportivos',
+      tagline: 'Impulso al deporte, la natación y la recreación sana con el Club Marlins',
+      icon: Trophy,
       image: '/assets/images/como_ayudamos_2.jpg',
-      alt: 'Celebración comunitaria festiva y entrega de regalos a niños y familias por Fundación Invadiendo Corazones',
-      description:
-        'Transformamos las fechas especiales y épocas navideñas en verdaderas fiestas comunitarias de afecto e inclusión. Realizamos jornadas de entrega de juguetes, refrigerios nutritivos y dinámicas lúdicas que fortalecen la autoestima y devuelven la ilusión a los más pequeños.',
-      highlights: [
-        'Jornadas de fin de año con entrega de juguetes, regalos y material lúdico.',
-        'Espacios seguros de integración comunitaria con música, arte y recreación formativa.',
-        'Fortalecimiento de los lazos familiares y del sentido de pertenencia comunitario.',
-        'Inclusión activa de niños con discapacidad en todas las dinámicas recreativas.',
+      alt: 'Jornada deportiva y torneo de natación con el Club Marlins apoyada por Fundación Invadiendo Corazones',
+      description: [
+        'La Fundación Invadiendo Corazones reafirma su compromiso con el deporte y la recreación, apoyando la jornada deportiva realizada con el Club de Natación Marlins.',
+        'Fue una jornada de torneo donde se impulsó el deporte y el amor por la natación, brindando a niños y jóvenes un espacio de aprendizaje, sana competencia y recreación.'
       ],
-      colorAccent: 'text-[#D48810]',
-      bgAccent: 'bg-[#FEF5E7]',
-      quote: '«Ver la sonrisa y el asombro de un niño al sentirse amado y valorado es la mayor recompensa de nuestro servicio.»'
+      highlightsTitle: '¿Por qué es importante que los niños y jóvenes aprendan a nadar?',
+      isNumberedHighlights: true,
+      highlights: [
+        'Promueve la salud física y el desarrollo integral.',
+        'Fomenta la disciplina, la constancia y el trabajo en equipo.',
+        'Brinda seguridad y habilidades para la vida.',
+        'Aleja a los jóvenes de los malos hábitos, ofreciéndoles espacios sanos de recreación.'
+      ],
+      closingNote: 'Desde la Fundación Invadiendo Corazones seguimos invadiendo corazones a través del deporte.',
+      colorAccent: 'text-[#0284C7]',
+      bgAccent: 'bg-[#E0F2FE]',
+      quote: '«Desde la Fundación Invadiendo Corazones seguimos invadiendo corazones a través del deporte.»'
     },
     {
       id: 3,
@@ -66,8 +92,10 @@ export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => 
       icon: HeartHandshake,
       image: '/assets/images/como_ayudamos_3.jpg',
       alt: 'Acompañamiento comunitario cercano y visitas en territorio con familias por Fundación Invadiendo Corazones',
-      description:
-        'Nuestra labor se vive caminando las calles y veredas donde las familias enfrentan mayores barreras. Brindamos presencia constante, orientación en salud preventiva, impulso a iniciativas productivas y un acompañamiento psicosocial cercano para empoderar a la comunidad.',
+      description: [
+        'Nuestra labor se vive caminando las calles y veredas donde las familias enfrentan mayores barreras. Brindamos presencia constante, orientación en salud preventiva, impulso a iniciativas productivas y un acompañamiento psicosocial cercano para empoderar a la comunidad.'
+      ],
+      highlightsTitle: 'Acciones directas en territorio:',
       highlights: [
         'Visitas domiciliarias para identificar necesidades en salud y bienestar.',
         'Acompañamiento bio-psico-social que equilibra la salud física, mental y comunitaria.',
@@ -90,7 +118,7 @@ export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => 
     if (isAutoPlaying) {
       autoPlayTimerRef.current = setInterval(() => {
         nextSlide();
-      }, 7500);
+      }, 8500);
     }
     return () => {
       if (autoPlayTimerRef.current) clearInterval(autoPlayTimerRef.current);
@@ -111,7 +139,7 @@ export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => 
           </h2>
 
           <p className="text-base sm:text-lg text-[#61514B] leading-relaxed font-normal">
-            Tres frentes prioritarios donde articulamos salud, educación, nutrición y desarrollo para generar transformaciones duraderas.
+            Tres frentes prioritarios donde articulamos salud, educación, deporte, nutrición y desarrollo para generar transformaciones duraderas.
           </p>
         </div>
 
@@ -147,7 +175,7 @@ export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
             
             {/* Visual Side (Left) */}
-            <div className="lg:col-span-7 relative h-[360px] sm:h-[460px] lg:h-[580px] bg-[#1E1715] overflow-hidden group">
+            <div className="lg:col-span-7 relative min-h-[360px] sm:min-h-[460px] lg:min-h-[620px] bg-[#1E1715] overflow-hidden group">
               <img
                 key={active.image}
                 src={active.image}
@@ -187,23 +215,44 @@ export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => 
                   </div>
                 </div>
 
-                {/* Description */}
-                <p className="text-sm sm:text-base text-[#574842] leading-relaxed">
-                  {active.description}
-                </p>
-
-                {/* Highlights List */}
-                <div className="pt-2 border-t border-[#F0E6DC] space-y-2.5">
-                  <div className="text-xs font-bold uppercase tracking-wider text-[#7A645D]">
-                    Acciones directas en territorio:
-                  </div>
-                  {active.highlights.map((point, index) => (
-                    <div key={index} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#4E3F39]">
-                      <CheckCircle2 className="w-4 h-4 text-[#D94848] shrink-0 mt-0.5" />
-                      <span>{point}</span>
-                    </div>
+                {/* Description Paragraphs */}
+                <div className="space-y-2.5">
+                  {active.description.map((paragraph, pIdx) => (
+                    <p key={pIdx} className="text-xs sm:text-sm text-[#574842] leading-relaxed">
+                      {paragraph}
+                    </p>
                   ))}
                 </div>
+
+                {/* Highlights List */}
+                {active.highlights && active.highlights.length > 0 && (
+                  <div className="pt-3 border-t border-[#F0E6DC] space-y-2.5">
+                    <div className="text-xs font-bold uppercase tracking-wider text-[#7A645D]">
+                      {active.highlightsTitle || 'Acciones directas en territorio:'}
+                    </div>
+                    {active.highlights.map((point, index) => (
+                      <div key={index} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#4E3F39]">
+                        {active.isNumberedHighlights ? (
+                          <span className="w-5 h-5 rounded-full bg-[#E0F2FE] text-[#0284C7] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 border border-[#BAE6FD]">
+                            {index + 1}
+                          </span>
+                        ) : (
+                          <CheckCircle2 className="w-4 h-4 text-[#D94848] shrink-0 mt-0.5" />
+                        )}
+                        <span className="leading-snug">{point}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Optional Closing Note Banner */}
+                {active.closingNote && (
+                  <div className="pt-1">
+                    <p className="text-xs sm:text-sm font-medium text-[#0369A1] italic bg-[#F0F9FF] p-3 rounded-xl border border-[#BAE6FD] leading-relaxed">
+                      «{active.closingNote}»
+                    </p>
+                  </div>
+                )}
 
               </div>
 
