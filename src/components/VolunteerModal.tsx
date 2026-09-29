@@ -44,7 +44,7 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
+    if (!formData.name.trim() || !formData.email.trim()) {
       setStatus('error');
       return;
     }
@@ -62,8 +62,8 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose 
           _captcha: 'false',
           'Nombre Completo': formData.name.trim(),
           'Correo Electrónico': formData.email.trim(),
-          'Teléfono / WhatsApp': formData.phone.trim(),
-          'Ciudad / Municipio': formData.city.trim() || 'No especificada',
+          'Teléfono / WhatsApp': formData.phone.trim() || 'No proporcionado',
+          'Ciudad / Municipio': formData.city.trim() || 'No proporcionada',
           'Área de Apoyo': formData.area,
           'Disponibilidad': formData.availability,
           'Motivación / Experiencia': formData.experience.trim() || 'Sin comentarios'
@@ -155,7 +155,7 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose 
               {status === 'error' && (
                 <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
-                  <span>Por favor completa tu nombre, correo y teléfono de contacto.</span>
+                  <span>Por favor completa tu nombre y correo electrónico de contacto.</span>
                 </div>
               )}
 
@@ -189,11 +189,10 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose 
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-[#4A3B35] mb-1">
-                    Teléfono / WhatsApp *
+                    Teléfono / WhatsApp <span className="text-[#887770] font-normal">(opcional)</span>
                   </label>
                   <input
                     type="tel"
-                    required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+57 300 123 4567"
@@ -205,7 +204,7 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-[#4A3B35] mb-1">
-                    Ciudad o Municipio
+                    Ciudad o Municipio <span className="text-[#887770] font-normal">(opcional)</span>
                   </label>
                   <input
                     type="text"
@@ -224,13 +223,11 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose 
                     onChange={(e) => setFormData({ ...formData, area: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-[#D5C5B5] bg-white text-base sm:text-sm text-[#2A1E1A] focus:ring-2 focus:ring-[#D94848] focus:border-[#D94848] focus:outline-none transition-shadow"
                   >
-                    <option value="salud_bienestar">Salud, Medicina y Bienestar</option>
-                    <option value="educacion_pedagogia">Educación y Talleres Formativos</option>
-                    <option value="emprendimiento_comunitario">Emprendimiento y Capacitación</option>
-                    <option value="recreacion_infantil">Recreación Infantil e Inclusión</option>
-                    <option value="logistica_mercados">Logística y Entrega de Ayudas</option>
-                    <option value="sostenibilidad_ambiental">Sostenibilidad Ambiental</option>
-                    <option value="comunicacion_audiovisual">Fotografía y Difusión</option>
+                    <option value="salud_bienestar">Salud, Acompañamiento y Bienestar</option>
+                    <option value="deporte_recreacion">Deporte, Natación y Recreación Infantil</option>
+                    <option value="apoyo_comunitario">Apoyo Comunitario y Social</option>
+                    <option value="logistica_ayudas">Logística y Coordinación de Ayudas</option>
+                    <option value="comunicacion_audiovisual">Fotografía, Video y Difusión</option>
                   </select>
                 </div>
               </div>

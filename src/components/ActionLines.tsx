@@ -257,9 +257,9 @@ export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => 
               </div>
 
               {/* Slide dots and autoplay controls footer */}
-              <div className="pt-5 border-t border-[#F0E6DC] flex flex-wrap items-center justify-between gap-3">
+              <div className="pt-5 border-t border-[#F0E6DC] flex items-center justify-between gap-4">
                 {/* Slide dots & Autoplay controls */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 w-full justify-between sm:justify-start">
                   <div className="flex items-center gap-1.5" role="tablist" aria-label="Indicador de diapositivas">
                     {slides.map((_, idx) => (
                       <button
@@ -295,17 +295,6 @@ export const ActionLines: React.FC<ActionLinesProps> = ({ onOpenVolunteer }) => 
                     )}
                   </button>
                 </div>
-
-                {onOpenVolunteer && (
-                  <button
-                    type="button"
-                    onClick={onOpenVolunteer}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#D94848] bg-[#FDF0EE] hover:bg-[#FBE4E0] active:bg-[#F7D2CC] border border-[#F8D5D0] rounded-xl transition-colors cursor-pointer"
-                  >
-                    <HeartHandshake className="w-3.5 h-3.5" />
-                    <span>Inscribirme como Voluntario</span>
-                  </button>
-                )}
               </div>
 
             </div>
