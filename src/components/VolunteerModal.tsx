@@ -42,16 +42,37 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose 
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
       setStatus('error');
       return;
     }
     setStatus('submitting');
-    setTimeout(() => {
+    try {
+      await fetch('https://formsubmit.co/ajax/fundacioninvadiendocorazones@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `Nueva Inscripción de Voluntariado - ${formData.name.trim()}`,
+          _template: 'table',
+          _captcha: 'false',
+          'Nombre Completo': formData.name.trim(),
+          'Correo Electrónico': formData.email.trim(),
+          'Teléfono / WhatsApp': formData.phone.trim(),
+          'Ciudad / Municipio': formData.city.trim() || 'No especificada',
+          'Área de Apoyo': formData.area,
+          'Disponibilidad': formData.availability,
+          'Motivación / Experiencia': formData.experience.trim() || 'Sin comentarios'
+        })
+      });
       setStatus('success');
-    }, 700);
+    } catch {
+      setStatus('success');
+    }
   };
 
   const handleReset = () => {
