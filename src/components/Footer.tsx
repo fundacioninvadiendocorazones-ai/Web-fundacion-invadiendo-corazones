@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = () => {
             <h4 className="text-xs font-bold uppercase tracking-wider text-white">Navegación</h4>
             <ul className="space-y-2 text-xs sm:text-sm text-[#BDB0A6]">
               <li><a href="#historia" className="hover:text-white transition-colors">Nuestra Historia</a></li>
-              <li><a href="#mision" className="hover:text-white transition-colors">Misión y Valores</a></li>
+              <li><a href="#proposito" className="hover:text-white transition-colors">Nuestro Propósito</a></li>
               <li><a href="#lineas-de-accion" className="hover:text-white transition-colors">Cómo Ayudamos</a></li>
               <li><a href="#donaciones" className="hover:text-white transition-colors">Donaciones</a></li>
             </ul>

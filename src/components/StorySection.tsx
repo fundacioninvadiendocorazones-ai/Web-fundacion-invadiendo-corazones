@@ -18,7 +18,7 @@ export const StorySection: React.FC = () => {
           
           <div className="relative w-full h-[320px] sm:h-[440px] md:h-[520px] lg:h-[600px] overflow-hidden">
             <img
-              src="/assets/images/historia_oficial.jpg?v=2"
+              src="/assets/images/historia_oficial.jpg?v=restored"
               alt="Historia y labor comunitaria de Fundación Invadiendo Corazones en territorio"
               className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
             />

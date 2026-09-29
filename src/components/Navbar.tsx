@@ -20,9 +20,8 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
   const navLinks = [
     { label: 'Historia', href: '#historia' },
-    { label: 'Misión y Valores', href: '#mision' },
+    { label: 'Nuestro Propósito', href: '#proposito' },
     { label: 'Cómo Ayudamos', href: '#lineas-de-accion' },
-    { label: 'Donaciones', href: '#donaciones' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
