@@ -19,14 +19,14 @@ export default function App() {
   const [volunteerModalOpen, setVolunteerModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF7F2] text-[#2C2320]">
+    <div className="min-h-screen flex flex-col bg-[#FAF7F2] text-[#2C2320] w-full max-w-full overflow-x-hidden">
       {/* Intro Heart Splash Animation upon opening */}
       <HeartSplash />
 
       {/* Top navigation */}
       <Navbar />
 
-      <main className="flex-1">
+      <main className="flex-1 w-full max-w-full overflow-x-hidden">
         {/* 1. Hero */}
         <Hero />
 
@@ -48,7 +48,7 @@ export default function App() {
       {/* Footer */}
       <Footer />
 
-      {/* Floating Back to Top Button */}
+      {/* Floating Back to Top Button (Appears at 50% scroll) */}
       <ScrollToTopButton />
 
       {/* Interactive Modals */}

@@ -9,9 +9,12 @@ export const ScrollToTopButton: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const totalScrollable = document.documentElement.scrollHeight - window.innerHeight;
 
-      // Show if scrolled down past 140px
-      if (scrollTop > 140) {
+      // Show strictly starting at half the scroll of the page (50%)
+      const isPastHalfway = totalScrollable > 0 && (scrollTop / totalScrollable) >= 0.45;
+
+      if (isPastHalfway) {
         setIsVisible(true);
 
         // Clear any previous hide countdown
@@ -19,14 +22,14 @@ export const ScrollToTopButton: React.FC = () => {
           clearTimeout(hideTimeoutRef.current);
         }
 
-        // Auto-fade when user stops scrolling for 2.2 seconds
+        // Auto-fade when user stops scrolling for 2.5 seconds
         hideTimeoutRef.current = setTimeout(() => {
           if (!isHoveredRef.current) {
             setIsVisible(false);
           }
-        }, 2200);
+        }, 2500);
       } else {
-        // Near top of page, hide immediately
+        // Above halfway, hide immediately
         if (hideTimeoutRef.current) {
           clearTimeout(hideTimeoutRef.current);
         }

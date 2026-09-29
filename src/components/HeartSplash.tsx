@@ -5,6 +5,26 @@ export const HeartSplash: React.FC = () => {
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
+    // Lock body scroll while splash is active
+    if (isVisible) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          handleDismiss();
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+        document.body.style.overflow = prevOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [isVisible]);
+
+  useEffect(() => {
     // Listen for custom trigger to replay animation if requested (e.g. clicking header logo)
     const handleReplay = () => {
       setIsExiting(false);
@@ -43,7 +63,11 @@ export const HeartSplash: React.FC = () => {
   return (
     <div
       onClick={handleDismiss}
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#FAF7F2] select-none transition-all duration-450 ease-out cursor-pointer ${
+      onTouchEnd={(e) => {
+        e.preventDefault();
+        handleDismiss();
+      }}
+      className={`fixed inset-0 z-[99999] w-full h-[100dvh] flex flex-col items-center justify-center bg-[#FAF7F2] select-none transition-all duration-450 ease-out cursor-pointer overscroll-none overflow-hidden ${
         isExiting ? 'opacity-0 scale-105 pointer-events-none' : 'opacity-100 scale-100'
       }`}
       aria-label="Animación de bienvenida - Fundación Invadiendo Corazones"
@@ -97,29 +121,29 @@ export const HeartSplash: React.FC = () => {
 
       {/* Background ambient warm illumination */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] sm:w-[750px] sm:h-[750px] bg-gradient-to-tr from-[#FCD5CE]/60 via-[#F7ECE1]/40 to-transparent blur-3xl rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[550px] sm:max-w-[750px] h-[90vw] max-h-[550px] sm:max-h-[750px] bg-gradient-to-tr from-[#FCD5CE]/60 via-[#F7ECE1]/40 to-transparent blur-3xl rounded-full" />
       </div>
 
-      <div className="relative flex flex-col items-center justify-center px-6 text-center max-w-lg mx-auto">
+      <div className="relative flex flex-col items-center justify-center px-4 sm:px-6 text-center max-w-lg mx-auto w-full">
         
         {/* Pulsing Concentric Ripple Rings behind the official hands & heart */}
-        <div className="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center mb-6">
-          <div className="absolute top-1/2 left-1/2 w-48 h-48 sm:w-60 sm:h-60 rounded-full border-2 border-[#E03338]/30 splash-ripple-fast-1 pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 w-48 h-48 sm:w-60 sm:h-60 rounded-full border-2 border-[#E03338]/20 splash-ripple-fast-2 pointer-events-none" />
+        <div className="relative w-48 h-48 sm:w-72 sm:h-72 md:w-80 md:h-80 flex items-center justify-center mb-4 sm:mb-6">
+          <div className="absolute top-1/2 left-1/2 w-36 h-36 sm:w-56 sm:h-56 md:w-60 md:h-60 rounded-full border-2 border-[#E03338]/30 splash-ripple-fast-1 pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 w-36 h-36 sm:w-56 sm:h-56 md:w-60 md:h-60 rounded-full border-2 border-[#E03338]/20 splash-ripple-fast-2 pointer-events-none" />
 
           {/* Official Emblem: The exact hands and heart from the foundation's logo */}
           <div className="relative z-10 splash-logo-beating flex items-center justify-center">
             <img
               src="/logo_hands_heart.png"
               alt="Corazón y manos del logo de Fundación Invadiendo Corazones"
-              className="w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 object-contain select-none pointer-events-none"
+              className="w-40 h-40 sm:w-60 sm:h-60 md:w-72 md:h-72 max-h-[38dvh] object-contain select-none pointer-events-none"
             />
           </div>
         </div>
 
         {/* Slogan phrase directly underneath */}
-        <div className="relative z-10 px-4">
-          <p className="font-serif italic text-base sm:text-lg md:text-xl text-[#7D2820] max-w-lg mx-auto leading-relaxed text-balance">
+        <div className="relative z-10 px-2 sm:px-4">
+          <p className="font-serif italic text-sm sm:text-lg md:text-xl text-[#7D2820] max-w-lg mx-auto leading-relaxed text-balance">
             «Desde el corazón de Dios, uniendo nuestras manos para que brillen sonrisas»
           </p>
         </div>
